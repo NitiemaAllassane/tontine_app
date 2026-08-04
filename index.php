@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/output.css" rel="stylesheet">
-    <title>Ma Tontine</title>
+    <title>Ma Tontine- Accueil</title>
 </head>
 <body class="text-slate-950 min-h-dvh">
 
@@ -77,6 +77,10 @@
                 class="bg-purple-800 text-white font-semibold px-3 py-2 rounded-sm cursor-pointer">
                 Rejoindre la tontine
             </button>
+
+            <div class="mt-6">
+                <p class="text-center sm:text-start">Vous êtes déjà membre ? <a href="./pages/connexion.php" class="text-purple-800 underline">Connectez-vous !</a> pour accéder à votre espace.</p>
+            </div>
         </form>
     </div>
    </main>

@@ -1,5 +1,48 @@
 <aside class="flex flex-col gap-12 md:gap-36">
     <div class="flex flex-col gap-6">
+        <!-- Pages Admin -->
+        <a href="../pages/members.php" class="flex items-center gap-2">
+            <span>
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-users-round-icon lucide-users-round">
+                    <path d="M18 21a8 8 0 0 0-16 0"/>
+                    <circle cx="10" cy="8" r="5"/>
+                    <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
+                </svg>
+            </span>
+            <span class="text-lg">Membres</span>
+        </a>
+
+        <a href="../pages/payments.php" class="flex items-center gap-2">
+            <span>
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-banknote-icon lucide-banknote">
+                    <rect width="20" height="12" x="2" y="6" rx="2"/>
+                    <circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>
+                </svg>
+            </span>
+            <span class="text-lg">Paiements</span>
+        </a>
+
+        <!-- Member pages -->
         <a href="../pages/profil.php" class="flex items-center gap-2">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -61,48 +104,6 @@
                 </svg>
             </span>
             <span class="text-lg">Parametres</span>
-        </a>
-
-        <!-- Pages Admin -->
-        <a href="../pages/members.php" class="flex items-center gap-2">
-            <span>
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="24" 
-                    height="24" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    stroke-width="2" 
-                    stroke-linecap="round" 
-                    stroke-linejoin="round" 
-                    class="lucide lucide-users-round-icon lucide-users-round">
-                    <path d="M18 21a8 8 0 0 0-16 0"/>
-                    <circle cx="10" cy="8" r="5"/>
-                    <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
-                </svg>
-            </span>
-            <span class="text-lg">Membres</span>
-        </a>
-
-        <a href="../pages/payments.php" class="flex items-center gap-2">
-            <span>
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="24" 
-                    height="24" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    stroke-width="2" 
-                    stroke-linecap="round" 
-                    stroke-linejoin="round" 
-                    class="lucide lucide-banknote-icon lucide-banknote">
-                    <rect width="20" height="12" x="2" y="6" rx="2"/>
-                    <circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>
-                </svg>
-            </span>
-            <span class="text-lg">Paiements</span>
         </a>
     </div>
 

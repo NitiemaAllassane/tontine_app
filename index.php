@@ -8,8 +8,8 @@
 </head>
 <body class="text-slate-950 min-h-dvh">
 
-   <main>
-    <div class="max-w-2xl mx-auto pt-6 pb-12 px-6 md:px-0">
+   <main class="min-h-dvh flex items-center justify-center">
+    <div class="max-w-2xl mx-auto pt-6 py-24 px-6 md:px-0">
         <div class="mb-12">
             <h1 class="text-4xl mb-3">Rejoignez notre tontine !</h1>
             <p class="text-xl">

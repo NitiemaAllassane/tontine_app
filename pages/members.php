@@ -18,11 +18,11 @@
             </div>
             
             <section class="py-12 flex-1">
-                <h2 class="text-2xl mb-6">Les membres</h2>
+                <h2 class="text-2xl mb-6">Liste des membres</h2>
 
                 <div class="flex items-center justify-end mb-4">
                     <a 
-                        href=""
+                        href="./add_member.php"
                         class="bg-purple-800 text-white font-semibold px-3 py-2 rounded-sm cursor-pointer flex items-center gap-2">
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 

@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./css/output.css" rel="stylesheet">
-    <title>Ma Tontine- Accueil</title>
+    <link href="../css/output.css" rel="stylesheet">
+    <title>Ma Tontine- Admin</title>
 </head>
 <body class="text-slate-950 min-h-dvh">
 
    <main>
-    <div class="max-w-2xl mx-auto pt-12 pb-24 px-6 md:px-0">
+    <div class="max-w-2xl mx-auto py-24 px-6 md:px-0">
         <div class="mb-12">
-            <h1 class="text-4xl mb-3">Rejoignez notre tontine !</h1>
+            <h1 class="text-4xl mb-3">Bienvenue 👋</h1>
             <p class="text-xl">
-                Créez votre compte en quelques instants pour suivre 
-                vos paiements et participer facilement à la tontine.
+                Créons votre compte administrateur pour commencer à gérer votre tontine.
             </p>
         </div>
 
@@ -76,12 +75,12 @@
             <button 
                 type="submit" 
                 class="bg-purple-800 text-white font-semibold px-3 py-2 rounded-sm cursor-pointer">
-                Rejoindre la tontine
+                Créer mon compte administrateur
             </button>
 
-            <div class="mt-6">
-                <p class="text-center sm:text-start">Vous êtes déjà membre ? <a href="./pages/connexion.php" class="text-purple-800 underline">Connectez-vous !</a> pour accéder à votre espace.</p>
-            </div>
+            <!-- <div class="mt-6">
+                <p class="text-center sm:text-start">Vous êtes déjà membre ? <a href="./connexion.php" class="text-purple-800 underline">Connectez-vous !</a> pour accéder à votre espace.</p>
+            </div> -->
         </form>
     </div>
    </main>

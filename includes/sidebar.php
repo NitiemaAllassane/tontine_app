@@ -62,7 +62,7 @@
                     <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
                 </svg>
             </span>
-            <span class="text-lg">Membres</span>
+            <span class="text-lg">Listes des Membres</span>
         </a>
 
         <a href="../pages/payments.php" class="flex items-center gap-2">
@@ -82,10 +82,10 @@
                     <circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>
                 </svg>
             </span>
-            <span class="text-lg">Paiements</span>
+            <span class="text-lg">Paiements Des Membres</span>
         </a>
 
-        <a href="../pages/settings.php" class="flex items-center gap-2">
+        <a href="../pages/config.php" class="flex items-center gap-2">
             <span>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 

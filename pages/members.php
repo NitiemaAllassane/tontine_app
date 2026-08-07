@@ -57,7 +57,7 @@
                             <tr class="hover:bg-slate-50 transition-colors">
                                 <td class="px-6 py-4 font-medium text-slate-700">
                                     <figure>
-                                        <svg 
+                                        <!-- <svg 
                                             xmlns="http://www.w3.org/2000/svg" 
                                             width="24" 
                                             height="24" 
@@ -70,7 +70,10 @@
                                             class="lucide lucide-circle-user-round-icon lucide-circle-user-round size-12 text-purple-800">
                                             <path d="M17.925 20.056a6 6 0 0 0-11.851.001"/><circle cx="12" cy="11" r="4"/>
                                             <circle cx="12" cy="12" r="10"/>
-                                        </svg>
+                                        </svg> -->
+                                    </figure>
+                                    <figure class="w-12 h-12 overflow-hidden rounded-full relative">
+                                        <img src="../assets/images/img.jpg" alt="" class="w-full h-full object-cover">
                                     </figure>
                                 </td>
                                 <td class="px-6 py-4 text-slate-600">Sanfo Youssouf</td>

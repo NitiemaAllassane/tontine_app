@@ -79,6 +79,7 @@
                                 <td class="px-6 py-4 flex items-center flex-wrap gap-6">
                                     <a href="" class="underline text-blue-600">Voir</a>
                                     <a href="" class="underline text-red-600">Supprimé</a>
+                                    <a href="" class="underline text-yellow-600">Modifier</a>
                                 </td>
                             </tr>
 
@@ -105,8 +106,9 @@
                                 <td class="px-6 py-4 text-slate-600">0799999999</td>
                                 <td class="px-6 py-4 text-slate-600">Admin</td>
                                 <td class="px-6 py-4 flex items-center flex-wrap gap-6">
-                                    <a href="" class="underline">Voir</a>
+                                    <a href="" class="underline text-blue-600">Voir</a>
                                     <a href="" class="underline text-red-600">Supprimé</a>
+                                    <a href="" class="underline text-yellow-600">Modifier</a>
                                 </td>
                             </tr>
 
@@ -133,8 +135,9 @@
                                 <td class="px-6 py-4 text-slate-600">0799999999</td>
                                 <td class="px-6 py-4 text-slate-600">Admin</td>
                                 <td class="px-6 py-4 flex items-center flex-wrap gap-6">
-                                    <a href="" class="underline">Voir</a>
+                                    <a href="" class="underline text-blue-600">Voir</a>
                                     <a href="" class="underline text-red-600">Supprimé</a>
+                                    <a href="" class="underline text-yellow-600">Modifier</a>
                                 </td>
                             </tr>
                         </tbody>

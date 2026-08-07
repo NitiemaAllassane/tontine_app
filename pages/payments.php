@@ -50,6 +50,7 @@
                                 <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Montant</th>
                                 <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Date</th>
                                 <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Statut</th>
+                                <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Actions</th>
                             </tr>
                         </thead>
 
@@ -62,15 +63,10 @@
                                 <td class="px-6 py-4">
                                     <?php include('../includes/checked.php'); ?>
                                 </td>
-                            </tr>
-
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-slate-700">Koné Bere</td>
-                                <td class="px-6 py-4 text-slate-600">Semaine 14</td>
-                                <td class="px-6 py-4 text-slate-600">5000f</td>
-                                <td class="px-6 py-4 text-slate-600">05/01/2026</td>
-                                <td class="px-6 py-4">
-                                    <?php include('../includes/checked.php'); ?>
+                                <td class="px-6 py-4 flex items-center gap-4">
+                                    <a href="" class="underline text-blue-600">Voir</a>
+                                    <a href="" class="underline text-red-600">Supprimé</a>
+                                    <a href="" class="underline text-yellow-600">Modifier</a>
                                 </td>
                             </tr>
 
@@ -81,6 +77,26 @@
                                 <td class="px-6 py-4 text-slate-600">05/01/2026</td>
                                 <td class="px-6 py-4">
                                     <?php include('../includes/checked.php'); ?>
+                                </td>
+                                <td class="px-6 py-4 flex items-center gap-4">
+                                    <a href="" class="underline text-blue-600">Voir</a>
+                                    <a href="" class="underline text-red-600">Supprimé</a>
+                                    <a href="" class="underline text-yellow-600">Modifier</a>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-slate-700">Koné Bere</td>
+                                <td class="px-6 py-4 text-slate-600">Semaine 14</td>
+                                <td class="px-6 py-4 text-slate-600">5000f</td>
+                                <td class="px-6 py-4 text-slate-600">05/01/2026</td>
+                                <td class="px-6 py-4">
+                                    <?php include('../includes/checked.php'); ?>
+                                </td>
+                                <td class="px-6 py-4 flex items-center gap-4">
+                                    <a href="" class="underline text-blue-600">Voir</a>
+                                    <a href="" class="underline text-red-600">Supprimé</a>
+                                    <a href="" class="underline text-yellow-600">Modifier</a>
                                 </td>
                             </tr>
                         </tbody>

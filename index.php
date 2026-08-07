@@ -83,6 +83,30 @@
                 <p class="text-center sm:text-start">Vous êtes déjà membre ? <a href="./pages/connexion.php" class="text-purple-800 underline">Connectez-vous !</a> pour accéder à votre espace.</p>
             </div>
         </form>
+
+
+         <!-- <a
+            href="./pages/active_compte.php" 
+            type="submit" 
+            class="bg-pink-600 text-white font-semibold px-3 py-2 
+            rounded-full cursor-pointer fixed bottom-6 right-3 md:bottom-12 md:right-36"
+            title="Activer mon compte"
+        >
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                class="lucide lucide-user-icon lucide-user size-6 md:size-8">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+        </a> -->
     </div>
    </main>
     

@@ -1,3 +1,25 @@
+<?php
+session_start();
+include('../includes/auth.php');
+include('../configs/database.php');
+
+requireLogin('admin');
+
+$query = "SELECT 
+    P.payment_id, 
+    m.full_name, 
+    w.week_number, 
+    p.amount, 
+    p.created_at AS payment_date, 
+    p.status
+FROM payment p
+JOIN member m ON p.member_id = m.member_id
+JOIN week w ON p.week_id = w.week_id
+ORDER BY p.created_at DESC, w.week_number DESC";
+
+$stmt = $pdo_connexion->query($query);
+$payments = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -55,50 +77,62 @@
                         </thead>
 
                         <tbody class="divide-y divide-slate-200">
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-slate-700">Koné Bere</td>
-                                <td class="px-6 py-4 text-slate-600">Semaine 14</td>
-                                <td class="px-6 py-4 text-slate-600">5000f</td>
-                                <td class="px-6 py-4 text-slate-600">05/01/2026</td>
-                                <td class="px-6 py-4">
-                                    <?php include('../includes/checked.php'); ?>
-                                </td>
-                                <td class="px-6 py-4 flex items-center gap-4">
-                                    <a href="" class="underline text-blue-600">Voir</a>
-                                    <a href="" class="underline text-red-600">Supprimé</a>
-                                    <a href="" class="underline text-yellow-600">Modifier</a>
-                                </td>
-                            </tr>
 
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-slate-700">Koné Bere</td>
-                                <td class="px-6 py-4 text-slate-600">Semaine 14</td>
-                                <td class="px-6 py-4 text-slate-600">5000f</td>
-                                <td class="px-6 py-4 text-slate-600">05/01/2026</td>
-                                <td class="px-6 py-4">
-                                    <?php include('../includes/checked.php'); ?>
-                                </td>
-                                <td class="px-6 py-4 flex items-center gap-4">
-                                    <a href="" class="underline text-blue-600">Voir</a>
-                                    <a href="" class="underline text-red-600">Supprimé</a>
-                                    <a href="" class="underline text-yellow-600">Modifier</a>
-                                </td>
-                            </tr>
-
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-slate-700">Koné Bere</td>
-                                <td class="px-6 py-4 text-slate-600">Semaine 14</td>
-                                <td class="px-6 py-4 text-slate-600">5000f</td>
-                                <td class="px-6 py-4 text-slate-600">05/01/2026</td>
-                                <td class="px-6 py-4">
-                                    <?php include('../includes/checked.php'); ?>
-                                </td>
-                                <td class="px-6 py-4 flex items-center gap-4">
-                                    <a href="" class="underline text-blue-600">Voir</a>
-                                    <a href="" class="underline text-red-600">Supprimé</a>
-                                    <a href="" class="underline text-yellow-600">Modifier</a>
-                                </td>
-                            </tr>
+                            <?php if(empty($payments)): ?>
+                                <tr>
+                                    <td colspan="4" class="px-6 py-10">
+                                        <div class="text-slate-400 flex items-center justify-center gap-2">
+                                            <svg 
+                                                xmlns="http://www.w3.org/2000/svg" 
+                                                width="24" 
+                                                height="24" 
+                                                viewBox="0 0 24 24" 
+                                                fill="none" 
+                                                stroke="currentColor" 
+                                                stroke-width="2" 
+                                                stroke-linecap="round" 
+                                                stroke-linejoin="round" 
+                                                class="lucide lucide-circle-off-icon lucide-circle-off">
+                                                <path d="m2 2 20 20"/><path d="M8.35 2.69A10 10 0 0 1 21.3 15.65"/>
+                                                <path d="M19.08 19.08A10 10 0 1 1 4.92 4.92"/>
+                                            </svg>
+                                            Aucun paiement enregistré pour le moment
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php else: ?>
+                                <?php foreach($payments as $payment): ?>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="px-6 py-4 font-medium text-slate-700">
+                                            <?php echo htmlspecialchars($payment['full_name']) ?>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-600">
+                                            Semaine
+                                            <?php echo htmlspecialchars($payment['week_number']) ?>
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-600">
+                                            <?php echo htmlspecialchars($payment['amount']) ?>fcfa
+                                        </td>
+                                        <td class="px-6 py-4 text-slate-600">
+                                            <?php echo htmlspecialchars($payment['payment_date']) ?>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <?php if ($payment['status'] === 'paid'): ?>
+                                                <?php include('../includes/checked.php'); ?>
+                                            <?php elseif ($payment['status'] === 'pending'): ?>
+                                                <?php include('../includes/pending.php'); ?>
+                                            <?php else: ?>
+                                                <?php include('../includes/failed.php'); ?>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="px-6 py-4 flex items-center gap-4">
+                                            <a href="" class="underline text-blue-600">Voir</a>
+                                            <a href="" class="underline text-red-600">Supprimé</a>
+                                            <a href="" class="underline text-yellow-600">Modifier</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

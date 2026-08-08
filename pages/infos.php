@@ -1,4 +1,26 @@
+<?php
+session_start();
+include('../includes/auth.php');
+include('../configs/database.php');
 
+requireLogin('admin');
+
+try {
+    $stmt = $pdo_connexion->prepare("SELECT full_name, phone, photo, role FROM member WHERE member_id = :id");
+    $stmt->execute(["id" => $_SESSION['LOGGED']['id']]);
+    $admin = $stmt->fetch();
+
+    if (!$admin) {
+        session_destroy();
+        header('Location: ../../pages/connexion.php');
+        exit;
+    }
+} catch (PDOException $e) {
+    error_log($e->getMessage()); // pour toi, en debug
+    die("Erreur lors de la récupération des données de l'admin");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,9 +49,13 @@
 
                             <div class="mb-6 flex flex-col">
                                 <label for="photo" class="flex items-center gap-4 cursor-pointer">
-                                    <figure>
-                                        <?php include('../includes/image_placeholder.php') ?>
-                                    </figure>
+                                    <?php if(isset($admin['photo'])): ?>
+                                        <figure class="w-24 h-24 overflow-hidden rounded-full relative p-2 bg-purple-800">
+                                            <img class="w-full h-full object-cover rounded-full" src="../uploads/<?php echo $admin['photo'] ?>" alt="<?php echo 'Image de ' . $admin['full_name'] ?>">
+                                        </figure>
+                                    <?php else: ?>
+                                        <?php include('../includes/image_placeholder.php'); ?>
+                                    <?php endif; ?>
 
                                     <div>
                                         <h4 class="text-lg">Changer de photo</h4>
@@ -51,6 +77,7 @@
                                     type="text" 
                                     name="full_name" 
                                     id="full_name"
+                                    value="<?php echo htmlspecialchars($admin['full_name']);  ?>"
                                     class="border border-slate-600 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
                             </div>
@@ -61,6 +88,7 @@
                                     type="tel" 
                                     name="phone_number" 
                                     id="phone_number"
+                                    value="<?php echo htmlspecialchars($admin['phone']);  ?>"
                                     class="border border-slate-600 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
                             </div>

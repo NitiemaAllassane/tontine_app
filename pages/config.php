@@ -1,3 +1,10 @@
+<?php
+session_start();
+include('../includes/auth.php');
+include('../configs/database.php');
+
+requireLogin('admin');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

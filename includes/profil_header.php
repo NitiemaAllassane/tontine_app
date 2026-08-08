@@ -1,9 +1,4 @@
 <?php
-session_start();
-include('auth.php');
-include('../configs/database.php');
-
-requireLogin('admin');
 
 try {
     $stmt = $pdo_connexion->prepare("SELECT full_name, phone, photo, role FROM member WHERE member_id = :id");

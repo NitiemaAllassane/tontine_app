@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,30 +9,15 @@
 </head>
 <body class="text-slate-950 min-h-dvh pt-6">
 
-    <header class="border-y border-y-slate-4">
-        <div class="max-w-6xl mx-auto py-12 md:py-24 px-6 xl:px-0">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-                <div>
-                    <?php include('../includes/image_placeholder.php'); ?>
-                </div>
-                <div>
-                    <h1 class="text-3xl mb-2">Bienvenue, <span class="text-purple-800">Nom Complet</span></h1>
-                    <p class="text-gray-600">
-                        0799999999
-                        (<span class="text-purple-800 text-sm">Administrateur</span>)
-                    </p>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include_once('../includes/profil_header.php') ?>
 
    <main>
     <div class="max-w-6xl mx-auto px-6 xl:px-0">
-        <div class="flex flex-col md:flex-row gap-x-24">
+        <div class="flex flex-col md:flex-row gap-x-24 min-h-dvh">
             <div class="py-12 h-full md:sticky md:top-6">
                 <?php include('../includes/sidebar.php'); ?>
             </div>
-            
+
             <section class="py-12 flex-1">
                 <h2 class="text-2xl mb-12">Informations personnelles</h2>
 

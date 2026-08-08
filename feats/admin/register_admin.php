@@ -46,7 +46,7 @@ if (
     }
 
     // Verifier et uploader le fichier
-    $uploadResult = uploadImage($admin_photo, '../../uploads/admins');
+    $uploadResult = uploadImage($admin_photo, '../../uploads');
     if (!$uploadResult['success']) {
         $errors['photo'] = $uploadResult['error'];
     }

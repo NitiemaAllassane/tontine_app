@@ -135,7 +135,7 @@
     </div>
 
     <div>
-        <a href="../pages/settings.php" class="flex items-center gap-2 text-red-600">
+        <a href="../feats/admin/logout.php" class="flex items-center gap-2 text-red-600">
             <span>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$errors = $_SESSION['errors'] ?? [];
+$old = $_SESSION['old'] ?? [];
+unset($_SESSION['errors'], $_SESSION['old']);
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,7 +23,11 @@
             <h1 class="text-4xl mb-3">Connecter-vous !</h1>
         </div>
 
-        <form action="" method="post">
+        <?php if (isset($errors['global'])): ?>
+            <p class="text-red-600 mb-4"><?php echo htmlspecialchars($errors['global']); ?></p>
+        <?php endif; ?>
+
+        <form action="../feats/admin/login_admin.php" method="post">
             <div class="mb-4">
                 <div class="flex flex-col mb-4">
                     <label for="phone_number" class="mb-1">Numéro de téléphone</label>
@@ -22,6 +35,7 @@
                         type="tel" 
                         name="phone_number" 
                         id="phone_number"
+                        value="<?php echo htmlspecialchars($old['phone_number'] ?? ''); ?>"
                         class="border border-slate-600 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                     >
                 </div>

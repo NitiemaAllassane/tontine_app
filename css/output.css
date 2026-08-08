@@ -213,29 +213,17 @@
   .relative {
     position: relative;
   }
-  .right-0 {
-    right: 0px;
-  }
   .right-3 {
     right: calc(var(--spacing) * 3);
-  }
-  .right-24 {
-    right: calc(var(--spacing) * 24);
-  }
-  .right-36 {
-    right: calc(var(--spacing) * 36);
-  }
-  .bottom-0 {
-    bottom: 0px;
   }
   .bottom-6 {
     bottom: calc(var(--spacing) * 6);
   }
-  .bottom-12 {
-    bottom: calc(var(--spacing) * 12);
-  }
   .mx-auto {
     margin-inline: auto;
+  }
+  .mt-1 {
+    margin-top: var(--spacing);
   }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
@@ -267,9 +255,6 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
   .size-6 {
     width: calc(var(--spacing) * 6);
     height: calc(var(--spacing) * 6);
@@ -282,9 +267,6 @@
     width: calc(var(--spacing) * 24);
     height: calc(var(--spacing) * 24);
   }
-  .h-6 {
-    height: calc(var(--spacing) * 6);
-  }
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
@@ -293,9 +275,6 @@
   }
   .min-h-dvh {
     min-height: 100dvh;
-  }
-  .w-6 {
-    width: calc(var(--spacing) * 6);
   }
   .w-12 {
     width: calc(var(--spacing) * 12);
@@ -312,14 +291,8 @@
   .flex-1 {
     flex: 1;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -420,17 +393,11 @@
   .bg-pink-600 {
     background-color: var(--color-pink-600);
   }
-  .bg-pink-800 {
-    background-color: var(--color-pink-800);
-  }
   .bg-purple-800 {
     background-color: var(--color-purple-800);
   }
   .bg-red-600 {
     background-color: var(--color-red-600);
-  }
-  .bg-rose-800 {
-    background-color: var(--color-rose-800);
   }
   .bg-slate-50 {
     background-color: var(--color-slate-50);
@@ -535,9 +502,6 @@
   .text-green-600 {
     color: var(--color-green-600);
   }
-  .text-orange-600 {
-    color: var(--color-orange-600);
-  }
   .text-purple-800 {
     color: var(--color-purple-800);
   }
@@ -574,10 +538,6 @@
   .shadow-sm {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .outline-purple-800 {
     outline-color: var(--color-purple-800);
@@ -622,14 +582,6 @@
     .md\:size-8 {
       width: calc(var(--spacing) * 8);
       height: calc(var(--spacing) * 8);
-    }
-    .md\:size-12 {
-      width: calc(var(--spacing) * 12);
-      height: calc(var(--spacing) * 12);
-    }
-    .md\:size-24 {
-      width: calc(var(--spacing) * 24);
-      height: calc(var(--spacing) * 24);
     }
     .md\:flex-row {
       flex-direction: row;
@@ -733,11 +685,6 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -759,7 +706,6 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-outline-style: solid;
     }
   }
 }

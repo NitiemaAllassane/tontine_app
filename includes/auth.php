@@ -38,4 +38,27 @@ function requireLogin(?string $requiredRole = null, string $redirectTo = '../../
 }
 
 
+/**
+ * Vérifie si la tontine a déjà été initialisée (au moins une semaine créée).
+ */
+function tontineIsInitialized(PDO $pdo): bool
+{
+    $count = $pdo->query("SELECT COUNT(*) FROM week")->fetchColumn();
+    return $count > 0;
+}
+
+
+
+/**
+ * Redirige vers la page de configuration si la tontine n'est pas encore initialisée.
+ */
+function requireTontineInitialized(PDO $pdo, string $redirectTo = '../pages/configure_weeks.php'): void
+{
+    if (!tontineIsInitialized($pdo)) {
+        header('Location: ' . $redirectTo);
+        exit;
+    }
+}
+
+
 ?>

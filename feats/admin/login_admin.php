@@ -24,14 +24,25 @@ if (trim($phone_number) !== "" && trim($code) !== "") {
 
 // Verification globale
 if (empty($errors)) {
+
+    $sql = "SELECT * FROM week";
+    $sqlPrepare = $pdo_connexion->prepare($sql);
+    $sqlPrepare->execute();
+    $weesks = $sqlPrepare->fetchAll();
+
     $_SESSION['LOGGED'] = [
         "id" => $member['member_id'],
         "phone" => $phone_number,
         "role" => $member['role'],
     ];
 
-    header('Location: ../../pages/profil.php');
-    exit;
+    if (empty($weesks)) {
+        header('Location: ../../pages/config.php');
+        exit;
+    } else {
+        header('Location: ../../pages/profil.php');
+        exit;
+    }
 
 } else {
     $_SESSION['errors'] = $errors;

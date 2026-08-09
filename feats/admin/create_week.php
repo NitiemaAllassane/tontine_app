@@ -1,68 +1,58 @@
-/**
-VERIFIER LE CODE AVANT DE TESTER.
-Ce CODE a ete genere par CLAUDE
- */
-
-
 <?php
-// session_start();
-// include('../../includes/auth.php');
-// include('../../configs/database.php');
+session_start();
+include('../../includes/auth.php');
+include('../../configs/database.php');
 
-// requireLogin('admin');
+requireLogin('admin');
 
-// if (tontineIsInitialized($pdo_connexion)) {
-//     header('Location: ../../pages/profil.php');
-//     exit;
-// }
+if (tontineIsInitialized($pdo_connexion)) {
+    header('Location: ../../pages/profil.php');
+    exit;
+}
 
-// $weeksCount = $_POST['weeks'] ?? '';
+$weeksCount = $_POST['weeks'] ?? '';
 
-// $errors = [];
+$errors = [];
 
-// if (ctype_digit((string)$weeksCount) && (int)$weeksCount >= 1 && (int)$weeksCount <= 52) {
-//     $weeksCount = (int)$weeksCount;
-// } else {
-//     $errors['weeks'] = "Veuillez entrer un nombre de semaines valide (entre 1 et 52)";
-// }
+if (ctype_digit((string)$weeksCount) && (int)$weeksCount >= 1 && (int)$weeksCount <= 52) {
+    $weeksCount = (int)$weeksCount;
+} else {
+    $errors['weeks'] = "Veuillez entrer un nombre de semaines valide (entre 1 et 52)";
+}
 
-// if (empty($errors)) {
-//     try {
-//         $pdo_connexion->beginTransaction();
+if (empty($errors)) {
+    try {
+        $pdo_connexion->beginTransaction();
 
-//         $weekStmt = $pdo_connexion->prepare("
-//             INSERT INTO week (week_number, start_date, end_date)
-//             VALUES (:week_number, :start_date, :end_date)
-//         ");
+        $weekStmt = $pdo_connexion->prepare("
+            INSERT INTO week (week_number, year)
+            VALUES (:week_number, :year)
+        ");
 
-//         $currentStart = new DateTime('today');
+        $currentYear = (int)date('Y');
 
-//         for ($i = 1; $i <= $weeksCount; $i++) {
-//             $currentEnd = (clone $currentStart)->modify('+6 days');
+        for ($i = 1; $i <= $weeksCount; $i++) {
+            $weekStmt->execute([
+                "week_number" => $i,
+                "year" => $currentYear,
+            ]);
+        }
 
-//             $weekStmt->execute([
-//                 "week_number" => $i,
-//                 "start_date" => $currentStart->format('Y-m-d'),
-//                 "end_date" => $currentEnd->format('Y-m-d'),
-//             ]);
+        $pdo_connexion->commit();
 
-//             $currentStart = (clone $currentEnd)->modify('+1 day');
-//         }
+        $_SESSION['success'] = "{$weeksCount} semaines ont été créées avec succès";
+        header('Location: ../../pages/profil.php');
+        exit;
 
-//         $pdo_connexion->commit();
-
-//         header('Location: ../../pages/profil.php');
-//         exit;
-
-//     } catch (PDOException $e) {
-//         $pdo_connexion->rollBack();
-//         error_log($e->getMessage());
-//         $_SESSION['errors'] = ['global' => "Une erreur est survenue"];
-//         header('Location: ../../pages/configure_weeks.php');
-//         exit;
-//     }
-// } else {
-//     $_SESSION['errors'] = $errors;
-//     header('Location: ../../pages/configure_weeks.php');
-//     exit;
-// }
+    } catch (PDOException $e) {
+        $pdo_connexion->rollBack();
+        error_log($e->getMessage());
+        $_SESSION['errors'] = ['global' => "Une erreur est survenue"];
+        header('Location: ../../pages/config.php');
+        exit;
+    }
+} else {
+    $_SESSION['errors'] = $errors;
+    header('Location: ../../pages/config.php');
+    exit;
+}

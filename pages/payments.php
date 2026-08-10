@@ -126,9 +126,9 @@ $payments = $stmt->fetchAll();
                                             <?php endif; ?>
                                         </td>
                                         <td class="px-6 py-4 flex items-center gap-4">
-                                            <a href="" class="underline text-blue-600">Voir</a>
-                                            <a href="" class="underline text-red-600">Supprimé</a>
-                                            <a href="" class="underline text-yellow-600">Modifier</a>
+                                            <!-- <a href="" class="underline text-blue-600">Voir</a> -->
+                                            <a href="./edit_payment.php?id=<?php echo htmlspecialchars($payment['payment_id']) ?>" class="underline text-yellow-600">Modifier</a>
+                                            <a href="./delete_payment.php?id=<?php echo htmlspecialchars($payment['payment_id']) ?>" class="underline text-red-600">Supprimé</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

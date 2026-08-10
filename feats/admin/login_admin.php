@@ -11,7 +11,7 @@ $member = null;
 
 if (trim($phone_number) !== "" && trim($code) !== "") {
 
-    $stmt = $pdo_connexion->prepare("SELECT member_id, code, role FROM member WHERE phone = :phone");
+    $stmt = $pdo_connexion->prepare("SELECT member_id, code, role FROM member WHERE phone = :phone AND deleted_at IS NULL");;
     $stmt->execute(["phone" => $phone_number]);
     $member = $stmt->fetch();
 

@@ -10,7 +10,11 @@ $success = $_SESSION['success'] ?? null;
 $old = $_SESSION['old'] ?? [];
 unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
 
-$members = $pdo_connexion->query("SELECT member_id, full_name FROM member ORDER BY full_name ASC")->fetchAll();
+$members = $pdo_connexion->query("
+    SELECT member_id, full_name FROM member 
+    WHERE deleted_at IS NULL 
+    ORDER BY full_name ASC
+")->fetchAll();
 $weeks = $pdo_connexion->query("SELECT week_id, week_number, year FROM week ORDER BY year DESC, week_number ASC")->fetchAll();
 ?>
 <!DOCTYPE html>

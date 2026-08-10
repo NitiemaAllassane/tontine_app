@@ -137,11 +137,12 @@ $payments = $stmt->fetchAll();
                                                 </button>
                                             </form>
 
-                                            <form action="../pages/delete_payment.php" method="post">
+                                            <form action="../feats/admin/delete_payment.php" method="post">
                                                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($payment['payment_id']) ?>">
                                                 <button
                                                     type="submit"
                                                     class="bg-red-600 text-white p-2 rounded-sm cursor-pointer"
+                                                    onclick="return confirm('Voulez-vous vraiment supprimer ce paiement ?');"
                                                 >
                                                     Supprimer
                                                 </button>

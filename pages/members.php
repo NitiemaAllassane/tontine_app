@@ -5,7 +5,11 @@ include('../configs/database.php');
 
 requireLogin('admin');
 
-$query = "SELECT member_id, photo, full_name, phone, role FROM member";
+$errors = $_SESSION['errors'] ?? [];
+$success = $_SESSION['success'] ?? null;
+unset($_SESSION['errors'], $_SESSION['success']);
+
+$query = "SELECT member_id, photo, full_name, phone, role FROM member WHERE deleted_at IS NULL";
 
 $stmt = $pdo_connexion->prepare($query);
 $stmt->execute();
@@ -32,6 +36,18 @@ $members = $stmt->fetchAll();
             
             <section class="py-12 flex-1">
                 <h2 class="text-2xl mb-6">Liste des membres</h2>
+
+                <?php if ($success): ?>
+                    <p class="bg-green-50 text-green-700 border border-green-200 px-4 py-3 rounded-md mb-6">
+                        <?php echo htmlspecialchars($success); ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if (isset($errors['global'])): ?>
+                    <p class="bg-red-50 text-red-700 border border-red-200 px-4 py-3 rounded-md mb-6">
+                        <?php echo htmlspecialchars($errors['global']); ?>
+                    </p>
+                <?php endif; ?>
 
                 <div class="flex items-center justify-end mb-4">
                     <a 
@@ -132,25 +148,28 @@ $members = $stmt->fetchAll();
                                         </td>
                                         <td class="px-6 py-4 flex items-center flex-wrap gap-6">
                                             <!-- <a href="" class="underline text-blue-600">Voir</a> -->
-                                            <form action="../pages/edit_member.php" method="post">
-                                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($member['member_id']) ?>">
-                                                <button
-                                                    type="submit"
-                                                    class="bg-yellow-600 text-white p-2 rounded-sm cursor-pointer"
-                                                >
-                                                    Modifier
-                                                </button>
-                                            </form>
+                                            <?php if ((int)$member['member_id'] !== (int)$_SESSION['LOGGED']['id'] && $member['role'] !== 'admin'): ?>
+                                                <form action="../pages/edit_member.php" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($member['member_id']) ?>">
+                                                    <button
+                                                        type="submit"
+                                                        class="bg-yellow-600 text-white p-2 rounded-sm cursor-pointer"
+                                                    >
+                                                        Modifier
+                                                    </button>
+                                                </form>
 
-                                            <form action="../pages/edit_member.php" method="post">
-                                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($member['member_id']) ?>">
-                                                <button
-                                                    type="submit"
-                                                    class="bg-red-600 text-white p-2 rounded-sm cursor-pointer"
-                                                >
-                                                    Supprimer
-                                                </button>
-                                            </form>
+                                                <form action="../feats/admin/delete_member.php" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($member['member_id']) ?>">
+                                                    <button
+                                                        type="submit"
+                                                        onclick="return confirm('Voulez-vous vraiment supprimer ce membre ?');"
+                                                        class="bg-red-600 text-white p-2 rounded-sm cursor-pointer"
+                                                    >
+                                                        Supprimer
+                                                    </button>
+                                                </form>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

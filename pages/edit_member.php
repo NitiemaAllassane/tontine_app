@@ -5,7 +5,7 @@ include('../configs/database.php');
 
 requireLogin('admin');
 
-$member_id = $_GET['id'] ?? '';
+$member_id = $_POST['id'] ?? '';
 
 if (!ctype_digit((string)$member_id)) {
     header('Location: ../pages/members.php');

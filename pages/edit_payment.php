@@ -5,7 +5,7 @@ include('../configs/database.php');
 
 requireLogin('admin');
 
-$payment_id = $_GET['id'] ?? '';
+$payment_id = $_POST['id'] ?? '';
 
 if (!ctype_digit((string)$payment_id)) {
     header('Location: ../pages/payments.php');
@@ -29,6 +29,7 @@ if (!$payment) {
 $errors = $_SESSION['errors'] ?? [];
 $success = $_SESSION['success'] ?? null;
 $old = $_SESSION['old'] ?? [];
+
 unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
 
 // Priorité aux valeurs de session (retour d'erreur), sinon valeurs actuelles en base

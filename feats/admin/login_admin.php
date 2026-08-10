@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../../configs/database.php');
+include('../../includes/auth.php');
 
 $phone_number = $_POST['phone_number'] ?? '';
 $code = $_POST['code'] ?? '';
@@ -24,23 +25,18 @@ if (trim($phone_number) !== "" && trim($code) !== "") {
 
 // Verification globale
 if (empty($errors)) {
-
-    $sql = "SELECT * FROM week";
-    $sqlPrepare = $pdo_connexion->prepare($sql);
-    $sqlPrepare->execute();
-    $weesks = $sqlPrepare->fetchAll();
-
     $_SESSION['LOGGED'] = [
         "id" => $member['member_id'],
         "phone" => $phone_number,
         "role" => $member['role'],
     ];
 
-    if (empty($weesks)) {
-        header('Location: ../../pages/config.php');
+
+    if (tontineIsInitialized($pdo_connexion)) {
+        header('Location: ../../pages/profil.php');
         exit;
     } else {
-        header('Location: ../../pages/profil.php');
+        header('Location: ../../pages/config.php');
         exit;
     }
 

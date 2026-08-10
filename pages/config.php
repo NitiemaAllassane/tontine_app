@@ -8,6 +8,16 @@ requireLogin('admin');
 $errors = $_SESSION['errors'] ?? [];
 $success = $_SESSION['success'] ?? null;
 unset($_SESSION['errors'], $_SESSION['success']);
+
+$sql = "SELECT COUNT(*) FROM week";
+$sqlPrepare = $pdo_connexion->prepare($sql);
+$sqlPrepare->execute();
+$weekCount = (int) $sqlPrepare->fetchColumn();
+
+if (!tontineIsInitialized($pdo_connexion)) {
+    $weekCount = 4;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -51,7 +61,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
                                 type="number"
                                 name="weeks" 
                                 id="weeks"
-                                value="4"
+                                value="<?php echo htmlspecialchars($weekCount) ?>"
                                 class="border border-slate-600 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                             >
                             <?php if (isset($errors['weeks'])): ?>

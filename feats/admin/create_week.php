@@ -5,14 +5,14 @@ include('../../configs/database.php');
 
 requireLogin('admin');
 
+
+$errors = [];
+
 if (tontineIsInitialized($pdo_connexion)) {
-    header('Location: ../../pages/profil.php');
-    exit;
+    $errors['weeks'] = "Vous avez déjà défini la durée de votre tontine. Vous pouvez la modifier en la réinitialisant.";
 }
 
 $weeksCount = $_POST['weeks'] ?? '';
-
-$errors = [];
 
 if (ctype_digit((string)$weeksCount) && (int)$weeksCount >= 1 && (int)$weeksCount <= 52) {
     $weeksCount = (int)$weeksCount;
@@ -41,7 +41,7 @@ if (empty($errors)) {
         $pdo_connexion->commit();
 
         $_SESSION['success'] = "{$weeksCount} semaines ont été créées avec succès";
-        header('Location: ../../pages/profil.php');
+        header('Location: ../../pages/config.php');
         exit;
 
     } catch (PDOException $e) {

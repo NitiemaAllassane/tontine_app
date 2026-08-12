@@ -8,6 +8,7 @@ requireLogin('admin');
 $query = "SELECT 
     P.payment_id, 
     m.full_name, 
+    m.photo,
     w.week_number, 
     p.amount, 
     p.created_at AS payment_date, 
@@ -67,7 +68,8 @@ $payments = $stmt->fetchAll();
                     <table class="w-full text-sm">
                         <thead>
                             <tr class="bg-slate-50 border-b border-slate-200">
-                                <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Membre</th>
+                                <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Photo</th>
+                                <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Nom</th>
                                 <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Semaine</th>
                                 <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Montant</th>
                                 <th class="text-left font-medium text-slate-500 uppercase text-xs tracking-wide px-6 py-4">Date</th>
@@ -103,6 +105,34 @@ $payments = $stmt->fetchAll();
                             <?php else: ?>
                                 <?php foreach($payments as $payment): ?>
                                     <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="px-6 py-4 font-medium text-slate-700">
+                                            <?php if(isset($payment['photo'])): ?>
+                                                <figure class="w-12 h-12 overflow-hidden rounded-full relative">
+                                                    <img 
+                                                        src="../uploads/<?php echo htmlspecialchars($payment['photo']); ?>" 
+                                                        alt="<?php echo 'Image de ' . htmlspecialchars($payment['full_name']); ?>" 
+                                                        class="w-full h-full object-cover"
+                                                    >
+                                                </figure>
+                                            <?php else: ?>
+                                                <figure>
+                                                    <svg 
+                                                        xmlns="http://www.w3.org/2000/svg" 
+                                                        width="24" 
+                                                        height="24" 
+                                                        viewBox="0 0 24 24" 
+                                                        fill="none" 
+                                                        stroke="currentColor" 
+                                                        stroke-width="2" 
+                                                        stroke-linecap="round" 
+                                                        stroke-linejoin="round" 
+                                                        class="lucide lucide-circle-user-round-icon lucide-circle-user-round size-12 text-purple-800">
+                                                        <path d="M17.925 20.056a6 6 0 0 0-11.851.001"/><circle cx="12" cy="11" r="4"/>
+                                                        <circle cx="12" cy="12" r="10"/>
+                                                    </svg>
+                                                </figure>
+                                            <?php endif;  ?>
+                                        </td>
                                         <td class="px-6 py-4 font-medium text-slate-700">
                                             <?php echo htmlspecialchars($payment['full_name']) ?>
                                         </td>

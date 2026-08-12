@@ -108,7 +108,7 @@ if (empty($errors)) {
     } catch (PDOException $e) {
         error_log($e->getMessage());
         $_SESSION['errors'] = ['global' => "Une erreur est survenue, veuillez réessayer"];
-        header('Location: ../../views/admin/register.php');
+        header('Location: ../../index.php');
         exit;
     }
 
@@ -119,7 +119,7 @@ if (empty($errors)) {
         'phone_number' => $phone_number,
     ];
 
-    header('Location: ../../views/admin/register.php');
+    header('Location: ../../index.php');
     exit;
 }
 ?>

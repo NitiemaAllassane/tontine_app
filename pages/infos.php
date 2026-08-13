@@ -20,6 +20,12 @@ try {
     die("Erreur lors de la récupération des données de l'admin");
 }
 
+
+$errors = $_SESSION['errors'] ?? [];
+$success = $_SESSION['success'] ?? null;
+$old = $_SESSION['old'] ?? [];
+unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -43,9 +49,27 @@ try {
             <section class="py-12 flex-1">
                 <h2 class="text-2xl mb-12">Informations personnelles</h2>
 
+                <?php if ($success): ?>
+                    <p class="bg-green-50 text-green-700 border border-green-200 px-4 py-3 rounded-md mb-6">
+                        <?php echo htmlspecialchars($success); ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if (isset($errors['global'])): ?>
+                    <p class="bg-red-50 text-red-700 border border-red-200 px-4 py-3 rounded-md mb-6">
+                        <?php echo htmlspecialchars($errors['global']); ?>
+                    </p>
+                <?php endif; ?>
+
                 <div>
-                    <form action="" method="post">
+                    <form action="../feats/admin/edit_admin_infos.php" method="post" enctype="multipart/form-data">
                         <div class="mb-4">
+
+                            <input 
+                                type="hidden" 
+                                name="admin_id" 
+                                value="<?php echo $_SESSION['LOGGED']['id']; ?>"
+                            >
 
                             <div class="mb-6 flex flex-col">
                                 <label for="photo" class="flex items-center gap-4 cursor-pointer">

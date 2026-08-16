@@ -17,6 +17,39 @@ try {
 
 ?>
 
+<div class="flex items-center md:hidden sticky top-0 md:static bg-white py-2">
+    <button 
+        id="sidebar-toggle" 
+        type="button"
+        class="md:hidden p-2"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="sidebar-mobile"
+    >
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            class="lucide lucide-menu-icon lucide-menu size-8">
+            <path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/>
+        </svg>
+    </button>
+    <h3 class="text-lg">Menu</h3>
+</div>
+
+<!-- Side bar mobile -->
+<div>
+    <?php include_once('mobile_sidebar.php'); ?>
+</div>
+
+
+
 <header class="border-y border-y-slate-4">
     <div class="max-w-6xl mx-auto py-12 md:py-24 px-6 xl:px-0">
         <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">

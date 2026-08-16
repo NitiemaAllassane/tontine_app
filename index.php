@@ -82,6 +82,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
                         id="code" 
                         maxlength="4"
                         required
+                        autocomplete="off"
                         class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                     >
                 </div>
@@ -94,6 +95,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
                         id="code_confirm" 
                         maxlength="4"
                         required
+                        autocomplete="off"
                         class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                     >
                     <?php if (isset($errors['code'])): ?>

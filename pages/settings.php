@@ -73,6 +73,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
                                     name="current_code" 
                                     id="current_code" 
                                     maxlength="4"
+                                    autocomplete="off"
                                     class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
                                 <?php if (isset($errors['current_code'])): ?>
@@ -87,6 +88,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
                                     name="new_code" 
                                     id="new_code" 
                                     maxlength="4"
+                                    autocomplete="off"
                                     class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
                             </div>
@@ -98,6 +100,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
                                     name="code_confirm" 
                                     id="code_confirm" 
                                     maxlength="4"
+                                    autocomplete="off"
                                     class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
                                 <?php if (isset($errors['new_code'])): ?>

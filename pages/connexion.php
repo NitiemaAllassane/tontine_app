@@ -47,6 +47,8 @@ unset($_SESSION['errors'], $_SESSION['old']);
                         name="code" 
                         id="code" 
                         maxlength="4"
+                        required
+                        autocomplete="off"
                         class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                     >
                 </div>

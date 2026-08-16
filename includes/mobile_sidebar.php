@@ -1,9 +1,17 @@
-<aside class="hidden md:flex flex-col gap-12 md:gap-36">
+<!-- Overlay visible seulement sur mobile -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/40 z-40 hidden md:hidden"></div>
+
+
+<aside 
+    id="sidebar-mobile" 
+    class="fixed top-0 left-0 h-full w-64 bg-white z-50 p-6 -translate-x-full 
+    transition-transform duration-300 flex flex-col justify-center gap-24 md:hidden overflow-y-auto"
+>
     <div class="flex flex-col gap-6">
         
 
         <!-- Member pages -->
-        <a href="../pages/profil.php" class="flex items-center gap-2">
+        <a href="../pages/profil.php" class="flex gap-2">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     width="24" 
@@ -22,7 +30,7 @@
             <span class="text-lg">Mes paiements</span>
         </a>
 
-        <a href="../pages/infos.php" class="flex items-center gap-2">
+        <a href="../pages/infos.php" class="flex gap-2">
             <span>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -44,7 +52,7 @@
 
 
         <!-- Pages Admin -->
-        <a href="../pages/members.php" class="flex items-center gap-2">
+        <a href="../pages/members.php" class="flex gap-2">
             <span>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -65,7 +73,7 @@
             <span class="text-lg">Listes des Membres</span>
         </a>
 
-        <a href="../pages/payments.php" class="flex items-center gap-2">
+        <a href="../pages/payments.php" class="flex gap-2">
             <span>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 

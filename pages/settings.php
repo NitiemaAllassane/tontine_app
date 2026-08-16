@@ -4,6 +4,10 @@ include('../includes/auth.php');
 include('../configs/database.php');
 
 requireLogin('admin');
+
+$errors = $_SESSION['errors'] ?? [];
+$success = $_SESSION['success'] ?? null;
+unset($_SESSION['errors'], $_SESSION['success']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,8 +32,20 @@ requireLogin('admin');
             <section class="py-12 flex-1">
                 <h2 class="text-2xl mb-12">Parametres</h2>
 
+                <?php if ($success): ?>
+                    <p class="bg-green-50 text-green-700 border border-green-200 px-4 py-3 rounded-md mb-6">
+                        <?php echo htmlspecialchars($success); ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if (isset($errors['global'])): ?>
+                    <p class="bg-red-50 text-red-700 border border-red-200 px-4 py-3 rounded-md mb-6">
+                        <?php echo htmlspecialchars($errors['global']); ?>
+                    </p>
+                <?php endif; ?>
+
                 <div>
-                    <form action="" method="post" class="border border-gray-500 w-full p-6 rounded-md mb-12">
+                    <form action="../feats/admin/change_pin.php" method="post" class="border border-gray-500 w-full p-6 rounded-md mb-12">
                         <h3 class="flex items-center gap-2 mb-6">
                             <svg 
                                 xmlns="http://www.w3.org/2000/svg" 
@@ -59,6 +75,9 @@ requireLogin('admin');
                                     maxlength="4"
                                     class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
+                                <?php if (isset($errors['current_code'])): ?>
+                                    <p class="text-red-600 text-sm mt-1"><?php echo htmlspecialchars($errors['current_code']); ?></p>
+                                <?php endif; ?>
                             </div>
 
                             <div class="flex flex-col mb-3">
@@ -81,6 +100,9 @@ requireLogin('admin');
                                     maxlength="4"
                                     class="border-2 border-slate-500 px-3 py-2 rounded-md outline-purple-800 font-semibold"
                                 >
+                                <?php if (isset($errors['new_code'])): ?>
+                                    <p class="text-red-600 text-sm mt-1"><?php echo htmlspecialchars($errors['new_code']); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -172,11 +194,10 @@ requireLogin('admin');
 
 
                     <!-- Zone Danger -->
-                    <form action="" method="post" class="border border-gray-500 w-full p-6 rounded-md">
+                    <form action="../feats/admin/delete_member.php" method="post" class="border border-gray-500 w-full p-6 rounded-md">
                         <h3 class="text-red-600 font-semibold mb-4">Zone Danger</h3>
 
-                        <!-- ! mettre une valeur dans la value -->
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($_SESSION['LOGGED']['id']); ?>">
 
                         <div class="flex flex-col sm:flex-row sm:items-center p-3 gap-2 border border-gray-400 rounded-md mb-4">
                             <svg 
@@ -199,6 +220,7 @@ requireLogin('admin');
 
                         <button 
                             type="submit" 
+                            onclick="return confirm('Voulez-vous vraiment supprimer définitivement votre compte administrateur ?');"
                             class="bg-red-600 text-white font-semibold px-3 py-2 rounded-sm cursor-pointer flex items-center gap-2">
                             <svg 
                                 xmlns="http://www.w3.org/2000/svg" 

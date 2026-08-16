@@ -108,6 +108,69 @@ requireLogin('admin');
                         </button>
                     </form>
 
+
+                    <!-- Réinitialisation de la tontine -->
+                    <form action="../feats/admin/reset_tontine.php" method="post" class="border border-gray-500 w-full p-6 rounded-md mb-12">
+                        <h3 class="flex items-center gap-2 mb-6 text-red-600 font-semibold">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                width="24" 
+                                height="24" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                <path d="M3 3v5h5"/>
+                            </svg>
+                            Réinitialisation de la tontine
+                        </h3>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center p-3 gap-2 border border-gray-400 rounded-md mb-4">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                width="24" 
+                                height="24" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                class="lucide lucide-triangle-alert-icon lucide-triangle-alert">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                                <path d="M12 9v4"/>
+                                <path d="M12 17h.01"/>
+                            </svg>
+                            <p class="text-gray-500">Cette action est irréversible. Toutes les semaines et tous les paiements enregistrés seront définitivement supprimés. Les membres inscrits ne seront pas affectés.</p>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            onclick="return confirm('Voulez-vous vraiment réinitialiser la tontine ? Toutes les semaines et tous les paiements seront supprimés définitivement.');"
+                            class="bg-red-600 text-white font-semibold px-3 py-2 rounded-sm cursor-pointer flex items-center gap-2">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                width="24" 
+                                height="24" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                <path d="M3 3v5h5"/>
+                            </svg>
+                            Réinitialiser la tontine
+                        </button>
+                    </form>
+
+
                     <!-- Zone Danger -->
                     <form action="" method="post" class="border border-gray-500 w-full p-6 rounded-md">
                         <h3 class="text-red-600 font-semibold mb-4">Zone Danger</h3>
